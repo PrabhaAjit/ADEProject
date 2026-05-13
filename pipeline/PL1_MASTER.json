@@ -1,0 +1,66 @@
+{
+	"name": "PL1_MASTER",
+	"properties": {
+		"activities": [
+			{
+				"name": "SET_VAR_TRIGGER",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Trigger_var",
+					"value": {
+						"value": "@if(equals(pipeline().parameters.Trigger_param,null),pipeline().TriggerName,pipeline().parameters.Trigger_param)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "EXEC_RAW_DATA",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SET_VAR_TRIGGER",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL2_RAW_DATA",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Trigger_param": {
+							"value": "@pipeline().parameters.Trigger_param",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"Trigger_param": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"Trigger_var": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-05-11T03:40:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,15 @@
+{
+	"name": "adf-dev-b10-etl",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "806c6bf3-f06b-4e1e-a885-8d52bd04544b",
+		"tenantId": "055d77dd-56f3-43c2-86cc-54712101f8c5"
+	}
+}

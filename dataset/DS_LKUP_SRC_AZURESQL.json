@@ -1,0 +1,13 @@
+{
+	"name": "DS_LKUP_SRC_AZURESQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_LKUP_SRC_AZURESQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

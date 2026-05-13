@@ -1,0 +1,24 @@
+{
+	"name": "DS_SNK_ADLS_BULK_ADLS_PARQUET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SNK_ADLS_BULK_ADLS_PARQUET",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat(\n\t'bulk/', \n    \tformatDateTime(utcNow(), 'yyyy'), '/', \n    \tformatDateTime(utcNow(), 'MM'), '/', \n   \t formatDateTime(utcNow(), 'dd')\n)",
+					"type": "Expression"
+				},
+				"fileSystem": "input"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
